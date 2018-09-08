@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import InputPanel from './InputPanel/input-panel';
 import ToDoList from './ToDoList/to-do-list';
-import ToDoItem from './ToDoItem/to-do-item';
 import './App.css';
 
 class App extends Component {
@@ -10,6 +9,7 @@ class App extends Component {
         this.state = {
             heading: '',
             description: '',
+            priority: 'high',
             submitToDoItem: false
         }
     }
@@ -24,26 +24,40 @@ class App extends Component {
     descriptionChangeHandler = (event) => {
         this.setState({
             description: event.target.value
-        })
+        });
+    }
+
+    priorityHandler = (event) => {
+        this.setState({
+            priority: event.target.value
+        });
     }
 
     submitToDoHandler = () => {
         this.setState({
             submitToDoItem: true 
-        })
+        });
     }
 
     render() {
+
+        console.log("heading: " + this.state.heading);
+        console.log("desc: " + this.state.description);
+        console.log("priority: " + this.state.priority);
+        
         return (
             <div id="App">
                 <InputPanel 
-                    submitHandler={this.submitToDoHandler} 
                     headingChange={this.headingChangeHandler}
-                    descriptionChange={this.descriptionChangeHandler} />
+                    descriptionChange={this.descriptionChangeHandler} 
+                    priorityChange={this.priorityHandler}
+                    submitHandler={this.submitToDoHandler} 
+                />
+                    
                 <ToDoList 
                     description={this.state.description}
                     heading={this.state.heading}
-                    createToDo={this.state.createToDo} />
+                    createToDo={this.state.submitToDoItem} />
             </div>
         );
     }
