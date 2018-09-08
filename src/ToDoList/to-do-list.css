@@ -1,0 +1,9 @@
+#ToDoList {
+    width: 800px;
+    margin-left: 30px;
+}
+
+#ToDoList .to-do-list-container {
+    border: 1px solid grey;
+    padding: 20px;
+}
