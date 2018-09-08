@@ -1,0 +1,7 @@
+#InputPanel {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 50vh;
+}
+
