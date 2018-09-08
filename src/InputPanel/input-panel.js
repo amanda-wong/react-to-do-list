@@ -15,6 +15,10 @@ class InputPanel extends Component {
         this.props.descriptionChange(event);
     }
 
+    handlePrioritySelection = (event) => {
+        this.props.priorityChange(event);
+    }
+
     render() {
         return (
             <div id="InputPanel">
@@ -25,9 +29,9 @@ class InputPanel extends Component {
                     type="text" 
                     className="task-description" 
                     onChange={this.handleDescriptionChange} />
-                <select className="priority-rank">
-                    <option value="high priority">High Priority</option>
-                    <option value="low priority">Low Priority</option>
+                <select className="priority-rank" onChange={this.handlePrioritySelection}>
+                    <option value="high">High Priority</option>
+                    <option value="low">Low Priority</option>
                 </select>
                 <input type="submit" onClick={this.handleClick}/>
             </div>
