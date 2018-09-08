@@ -10,8 +10,8 @@ class InputPanel extends Component {
                 <select className="priority-rank">
                     <option value="high priority">High Priority</option>
                     <option value="low priority">Low Priority</option>
-                    <input type="submit" />
                 </select>
+                    <input type="submit" />
             </div>
         )
     }
