@@ -17,7 +17,7 @@ class InputPanel extends Component {
 
     handleSubmit = () => {
         if(this.state.heading !== '' && this.state.description !== '') {
-            this.props.submitHandler({...this.state});
+            this.props.submitHandler({...this.state});  //set whole state over to app
             this.resetFields();
         }
     }
@@ -43,7 +43,7 @@ class InputPanel extends Component {
     }
 
     resetFields = () => {
-        this.setState(this.baseState);
+        this.setState(this.baseState); 
     }
     
     render() {

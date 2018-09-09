@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './to-do-item.css';
 
 class ToDoItem extends Component {
     render() {
         return (
-            <div className="Item">
+            <div className={this.props.className + " Item"}>
                 <input type="checkbox" />
                 <div className="Item-content">
                     <h3 className="Item-title">{this.props.heading}</h3>
