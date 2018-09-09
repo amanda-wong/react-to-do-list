@@ -3,20 +3,46 @@ import './input-panel.css';
 
 class InputPanel extends Component {
 
-    handleClick = () => {
-        this.props.submitHandler();
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            heading: '',
+            description: '',
+            priority: 'high'
+        };
+    }
+
+    handleSubmit = () => {
+        if(this.state.heading !== '' && this.state.description !== '') {
+            this.props.submitHandler({...this.state});
+            
+            this.setState({
+                heading: '',
+                description: '',
+                priority: 'high'
+            })
+        }
     }
 
     handleHeadingChange = (event) => {
-        this.props.headingChange(event);
+        this.setState({
+            heading: event.target.value
+        });
     }
 
     handleDescriptionChange = (event) => {
-        this.props.descriptionChange(event);
+        this.setState({
+            description: event.target.value
+        });
     }
 
     handlePrioritySelection = (event) => {
-        this.props.priorityChange(event);
+        if(event.target.value !== this.state.priority) {  // to prevent rerender if same selection
+            this.setState({
+                priority: event.target.value
+            });
+        }
     }
 
     render() {
@@ -33,7 +59,7 @@ class InputPanel extends Component {
                     <option value="high">High Priority</option>
                     <option value="low">Low Priority</option>
                 </select>
-                <input type="submit" onClick={this.handleClick}/>
+                <input type="submit" onClick={this.handleSubmit} />
             </div>
         )
     }

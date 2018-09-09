@@ -7,43 +7,17 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            heading: '',
-            description: '',
-            priority: 'high',
-            submitToDoItem: false
+            toDoList: []
         }
     }
 
-
-    headingChangeHandler = (event) => {
+    submitToDoHandler = (state) => {
         this.setState({
-            heading: event.target.value
-        })
-    }
-
-    descriptionChangeHandler = (event) => {
-        this.setState({
-            description: event.target.value
+            toDoList: this.state.toDoList.concat(state) // how to add objects into an array
         });
     }
-
-    priorityHandler = (event) => {
-        this.setState({
-            priority: event.target.value
-        });
-    }
-
-    submitToDoHandler = () => {
-        this.setState({
-            submitToDoItem: true 
-        });
-    }
-
+    
     render() {
-
-        console.log("heading: " + this.state.heading);
-        console.log("desc: " + this.state.description);
-        console.log("priority: " + this.state.priority);
         
         return (
             <div id="App">
@@ -52,12 +26,9 @@ class App extends Component {
                     descriptionChange={this.descriptionChangeHandler} 
                     priorityChange={this.priorityHandler}
                     submitHandler={this.submitToDoHandler} 
-                />
+                    />
                     
-                <ToDoList 
-                    description={this.state.description}
-                    heading={this.state.heading}
-                    createToDo={this.state.submitToDoItem} />
+                <ToDoList toDoList={this.state.toDoList} />
             </div>
         );
     }
