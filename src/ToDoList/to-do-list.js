@@ -4,21 +4,18 @@ import './to-do-list.css';
 
 class ToDoList extends Component {
     render() {
-        
-        let ToDoItem = this.props.createToDo ? 
-            <ToDoItem 
-                heading={this.props.heading}
-                descriptions={this.props.description} 
-            /> 
+    
+        let toDoItems = this.props.toDoList.map(function(item, i){
+            return <ToDoItem key={i} heading={item.heading} description={item.description} />
+        });
 
-            : null;
+        console.log(this.props.toDoList)
+
         return(
-
-
             <div id="ToDoList">
                 <h1>To Do List</h1>
                 <div className="to-do-list-container">
-                    {ToDoItem}
+                 {toDoItems}
                 </div>
             </div>
         )
