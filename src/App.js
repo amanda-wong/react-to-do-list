@@ -12,13 +12,17 @@ class App extends Component {
     }
 
     submitToDoHandler = (state) => {
+        let sortedDate = this.state.toDoList.sort((a,b) => a.priority && a.heading > b.priority && b.heading).concat(state)
         this.setState({
-            toDoList: this.state.toDoList.concat(state) // how to add objects into an array
+            toDoList: sortedDate // how to add objects into an array
         });
     }
     
     render() {
         
+        console.log("Sorted: " + this.state.toDoList.sort((a,b) => a.priority > b.priority));
+        
+
         return (
             <div id="App">
                 <InputPanel 
