@@ -5,11 +5,20 @@ import './to-do-list.css';
 class ToDoList extends Component {
     render() {
     
-        let toDoItems = this.props.toDoList.map(function(item, i){
-            return <ToDoItem key={i} heading={item.heading} description={item.description} className={item.priority === 'high' ? 'high' : null}/>
+        let toDoItems = this.props.toDoList.map(function(item, i){   // remove object from list
+            if(!item.done) {
+                return (
+                    <ToDoItem 
+                        key={i} 
+                        heading={item.heading} 
+                        description={item.description} 
+                        className={item.priority === 'high' ? 'high' : null}
+                    />)
+            }
         });
 
-        console.log(this.props.toDoList)
+        console.log(this.props.toDoList);
+        
 
         return(
             <div className="to-do-list">

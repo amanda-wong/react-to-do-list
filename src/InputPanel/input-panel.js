@@ -9,7 +9,8 @@ class InputPanel extends Component {
         this.state = {
             heading: '',
             description: '',
-            priority: 'high'
+            priority: 'high',
+            done: false
         };
 
         this.baseState = this.state;
