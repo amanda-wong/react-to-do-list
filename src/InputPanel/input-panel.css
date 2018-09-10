@@ -1,7 +1,53 @@
-#InputPanel {
+h2 {
+    margin-top: 0;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color:#383636e0;
+}
+
+.input-panel {
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: 50vh;
+    padding: 30px;
+    margin: 30px;
+    background-color: #fff;
+}
+
+.task {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+select,
+option {
+    background-color: #fff;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input[type=submit], button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 2px;
+    width: 49%;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input[type=submit] {
+    background-color: #ffc107;
+    margin-right: 5px;
 }
 

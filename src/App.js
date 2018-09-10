@@ -7,31 +7,41 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            toDoList: []
+            toDoList: [],
+            showPanel: false
         }
     }
 
     submitToDoHandler = (state) => {
-        let sortedDate = this.state.toDoList.sort((a,b) => a.priority && a.heading > b.priority && b.heading).concat(state)
+        let sortedItems = this.state.toDoList.sort((a,b) => a.priority && a.heading > b.priority && b.heading).concat(state)
         this.setState({
-            toDoList: sortedDate // how to add objects into an array
+            toDoList: sortedItems // how to add objects into an array
         });
     }
-    
-    render() {
-        
-        console.log("Sorted: " + this.state.toDoList.sort((a,b) => a.priority > b.priority));
-        
 
+    addToDoClick = () => {
+        this.setState({showPanel:true})
+    }
+
+    closeModalHandler = () => {
+        this.setState({showPanel: false})
+    }
+     
+    render() {
         return (
-            <div id="App">
-                <InputPanel 
-                    headingChange={this.headingChangeHandler}
-                    descriptionChange={this.descriptionChangeHandler} 
-                    priorityChange={this.priorityHandler}
-                    submitHandler={this.submitToDoHandler} 
-                    />
-                    
+            <div className="app">
+                <div 
+                    className="add-to-do-button"
+                    onClick={this.addToDoClick}>+</div>
+                {this.state.showPanel
+                    ? <InputPanel 
+                        headingChange={this.headingChangeHandler}
+                        descriptionChange={this.descriptionChangeHandler} 
+                        priorityChange={this.priorityHandler}
+                        submitHandler={this.submitToDoHandler} 
+                        closeModal={this.closeModalHandler}
+                        />
+                    : null}    
                 <ToDoList toDoList={this.state.toDoList} />
             </div>
         );

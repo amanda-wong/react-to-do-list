@@ -4,11 +4,11 @@ import './to-do-item.css';
 class ToDoItem extends Component {
     render() {
         return (
-            <div className={this.props.className + " Item"}>
+            <div className={this.props.className + " item"}>
                 <input type="checkbox" />
-                <div className="Item-content">
-                    <h3 className="Item-title">{this.props.heading}</h3>
-                    <p className="Item-description">{this.props.description}</p>
+                <div className="item-content">
+                    <h3 className="item-title">{this.props.heading}</h3>
+                    <p className="item-description">{this.props.description}</p>
                 </div>
             </div>
         )

@@ -12,10 +12,10 @@ class ToDoList extends Component {
         console.log(this.props.toDoList)
 
         return(
-            <div id="ToDoList">
+            <div className="to-do-list">
                 <h1>To Do List</h1>
                 <div className="to-do-list-container">
-                 {toDoItems}
+                    {toDoItems}
                 </div>
             </div>
         )

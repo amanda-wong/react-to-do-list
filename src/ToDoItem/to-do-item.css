@@ -1,15 +1,23 @@
-.high {
-    border: 1px solid red;
+.item.high {
+    background-color: #f502023b;
 }
 
-.Item {
+.item {
     display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
-.Item-content {
+.item-content {
     margin-left: 10px;
 }
 
-.Item-title {
-    margin-top: 0;
+.item-title {
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.item-description {
+    margin: 10px 0 0;
+    font-style: italic;
 }
