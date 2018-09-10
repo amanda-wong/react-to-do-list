@@ -13,7 +13,7 @@ class App extends Component {
     }
 
     submitToDoHandler = (state) => {
-        let sortedItems = this.state.toDoList.sort((a,b) => a.priority && a.heading > b.priority && b.heading).concat(state)
+        let sortedItems = this.state.toDoList.sort((a,b) => a.priority > b.priority).concat(state)
         this.setState({
             toDoList: sortedItems // how to add objects into an array
         });
@@ -24,7 +24,7 @@ class App extends Component {
     }
 
     closeModalHandler = () => {
-        this.setState({showPanel: false})
+        this.setState({showPanel:false})
     }
      
     render() {
