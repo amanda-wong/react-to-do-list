@@ -10,11 +10,13 @@ class InputPanel extends Component {
             heading: '',
             description: '',
             priority: 'high',
-            done: false
+            id: ''
         };
 
         this.baseState = this.state;
     }
+
+    createId = () => Math.random().toString(36).substr(2,9);
 
     handleSubmit = () => {
         if(this.state.heading !== '' && this.state.description !== '') {
