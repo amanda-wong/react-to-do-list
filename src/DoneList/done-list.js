@@ -11,7 +11,7 @@ class DoneList extends Component {
             key={item.id} 
             heading={item.heading} 
             description={item.description}
-            className={item.priority === 'high' ? 'high done' : null + 'done'}
+            className={item.priority === 'high' ? 'high done' : 'done'}
         />   
         )) 
         return(
