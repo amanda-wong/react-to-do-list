@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import ToDoItem from './../ToDoItem/to-do-item';
+import Item from '../Item/item';
 import './to-do-list.css';
 
 class ToDoList extends Component {
-    render() {
-    
-        let toDoItems = this.props.toDoList.map(function(item, i){   // remove object from list
-            if(!item.done) {
-                return (
-                    <ToDoItem 
-                        key={i} 
-                        heading={item.heading} 
-                        description={item.description} 
-                        className={item.priority === 'high' ? 'high' : null}
-                    />)
-            }
-        });
 
-        console.log(this.props.toDoList);
-        
+    itemChangeHandler = (id) => {
+        this.props.itemChange(id);
+    }
+
+    render() {
+        let handler = this.itemChangeHandler.bind(this); // must bind this because below's map item is "this"
+
+        let toDoItems = this.props.toDoList.filter(item => !item.completed).map(item => 
+                <Item
+                    showCheckbox={true}
+                    key={item.id} 
+                    id={item.id} 
+                    heading={item.heading} 
+                    description={item.description} 
+                    className={item.priority === 'high' ? 'high' : null}
+                    itemChange={handler}
+                />);
 
         return(
             <div className="to-do-list">

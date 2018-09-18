@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputPanel from './InputPanel/input-panel';
 import ToDoList from './ToDoList/to-do-list';
+import DoneList from './DoneList/done-list';
 import './App.css';
 
 class App extends Component {
@@ -13,18 +14,29 @@ class App extends Component {
     }
 
     submitToDoHandler = (state) => {
-        let sortedItems = this.state.toDoList.sort((a,b) => a.priority > b.priority).concat(state)
+        let sortedItems = this.state.toDoList.concat(state).sort((a,b) => a.priority > b.priority);
         this.setState({
             toDoList: sortedItems // how to add objects into an array
         });
     }
 
+    itemCompletedHandler = (id) => {
+        let toDoList = this.state.toDoList;
+        let itemCompleted = toDoList.find(function(item){
+            return item.id === id
+        });
+
+        itemCompleted.completed = true;
+
+        this.setState({toDoList})
+    }
+
     addToDoClick = () => {
-        this.setState({showPanel:true})
+        this.setState({showPanel:true});
     }
 
     closeModalHandler = () => {
-        this.setState({showPanel:false})
+        this.setState({showPanel:false});
     }
      
     render() {
@@ -42,7 +54,11 @@ class App extends Component {
                         closeModal={this.closeModalHandler}
                         />
                     : null}    
-                <ToDoList toDoList={this.state.toDoList} />
+                <ToDoList 
+                    toDoList={this.state.toDoList} 
+                    itemChange={this.itemCompletedHandler}
+                />
+                <DoneList toDoList={this.state.toDoList} />
             </div>
         );
     }

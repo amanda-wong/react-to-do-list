@@ -2,6 +2,10 @@
     background-color: #f502023b;
 }
 
+.item.done {
+    text-decoration: line-through;
+}
+
 .item {
     display: flex;
     padding: 10px;
@@ -20,4 +24,8 @@
 .item-description {
     margin: 10px 0 0;
     font-style: italic;
+}
+
+.item.done .item-content {
+    text-decoration: 
 }

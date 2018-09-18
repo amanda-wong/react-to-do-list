@@ -10,7 +10,8 @@ class InputPanel extends Component {
             heading: '',
             description: '',
             priority: 'high',
-            id: ''
+            id: '',
+            completed: false
         };
 
         this.baseState = this.state;
@@ -20,7 +21,8 @@ class InputPanel extends Component {
 
     handleSubmit = () => {
         if(this.state.heading !== '' && this.state.description !== '') {
-            this.props.submitHandler({...this.state});  //set whole state over to app
+            let toDo = {...this.state,id: this.createId()}
+            this.props.submitHandler(toDo);  //send whole state over to app
             this.resetFields();
         }
     }
@@ -56,7 +58,6 @@ class InputPanel extends Component {
     }
     
     render() {
-
         return (
             <div className="modal" onClick={this.handleCloseModalClick}>
                 <div className="input-panel">
